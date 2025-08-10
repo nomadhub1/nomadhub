@@ -1,0 +1,431 @@
+<nav class="navbar" aria-label="Main Navigation">
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="/" class="logo" style="text-decoration:none; color:inherit;" aria-label="NomadProHub Home">
+        <span class="logo-icon" aria-hidden="true">🌍</span>
+        <span class="logo-text">NomadProHub</span>
+      </a>
+    </div>
+    <div class="nav-center">
+
+      <div class="nav-links">
+        <% let _activeNiche = typeof activeNiche !== 'undefined' ? activeNiche : null; %>
+        <% if (typeof isHome !=='undefined' && isHome) { %>
+          <a href="#remote-work-tools" class="nav-link<%= _activeNiche === 'remote-work-tools' ? ' active-nav' : '' %>">Remote Work</a>
+          <a href="#ai-for-freelancers" class="nav-link<%= _activeNiche === 'ai-for-freelancers' ? ' active-nav' : '' %>">AI & Automation</a>
+          <a href="#nomad-travel-visas" class="nav-link<%= _activeNiche === 'nomad-travel-visas' ? ' active-nav' : '' %>">Travel & Visas</a>
+          <a href="#side-hustles" class="nav-link<%= _activeNiche === 'side-hustles' ? ' active-nav' : '' %>">Side Hustles</a>
+          <a href="#freelance-skills" class="nav-link<%= _activeNiche === 'freelance-skills' ? ' active-nav' : '' %>">Freelancing</a>
+          <a href="#how-to-guides" class="nav-link<%= _activeNiche === 'how-to-guides' ? ' active-nav' : '' %>">How-To Guides</a>
+        <% } else { %>
+          <a href="/remote-work-tools" class="nav-link<%= _activeNiche === 'remote-work-tools' ? ' active-nav' : '' %>">Remote Work</a>
+          <a href="/ai-for-freelancers" class="nav-link<%= _activeNiche === 'ai-for-freelancers' ? ' active-nav' : '' %>">AI & Automation</a>
+          <a href="/nomad-travel-visas" class="nav-link<%= _activeNiche === 'nomad-travel-visas' ? ' active-nav' : '' %>">Travel & Visas</a>
+          <a href="/side-hustles" class="nav-link<%= _activeNiche === 'side-hustles' ? ' active-nav' : '' %>">Side Hustles</a>
+          <a href="/freelance-skills" class="nav-link<%= _activeNiche === 'freelance-skills' ? ' active-nav' : '' %>">Freelancing</a>
+          <a href="/how-to-guides" class="nav-link<%= _activeNiche === 'how-to-guides' ? ' active-nav' : '' %>">How-To Guides</a>
+        <% } %>
+      <style>
+        /* Removed activeNiche nav highlight implementation as requested */
+      </style>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <button class="search-btn" id="open-search-modal" aria-label="Open search">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </button>
+
+      <!-- Mobile Menu Trigger (single, styled, now using menu-toggle) -->
+      <!-- Mobile Menu Trigger (single, strict) -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open mobile menu" aria-haspopup="true" aria-controls="mobile-menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+
+      <!-- Mobile Menu Overlay -->
+      <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close mobile menu">&times;</button>
+        <ul class="mobile-menu-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/remote-work-tools">Remote Work</a></li>
+          <li><a href="/ai-for-freelancers">AI & Automation</a></li>
+          <li><a href="/nomad-travel-visas">Travel & Visas</a></li>
+          <li><a href="/side-hustles">Side Hustles</a></li>
+          <li><a href="/freelance-skills">Freelancing</a></li>
+          <li><a href="/how-to-guides">How-To Guides</a></li>
+        </ul>
+      </nav>
+      <style>
+        /* Hide menu-toggle when mobile menu is open */
+        .mobile-menu[aria-hidden="false"] ~ .menu-toggle {
+          display: none !important;
+        }
+        .mobile-menu {
+          display: none;
+          position: fixed;
+          top: 0; left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(30,32,38,0.97);
+          z-index: 10000;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+        }
+        .mobile-menu[aria-hidden="false"] {
+          display: flex !important;
+        }
+        .mobile-menu-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          text-align: center;
+        }
+        .mobile-menu-list li {
+          margin: 1.5rem 0;
+        }
+        .mobile-menu-list a {
+          color: #fff;
+          font-size: 1.5rem;
+          text-decoration: none;
+          font-weight: 500;
+          letter-spacing: 0.02em;
+          transition: color 0.2s;
+        }
+        .mobile-menu-list a:hover {
+          color: #ffd700;
+        }
+        .mobile-menu-close {
+          position: fixed;
+          top: 1rem;
+          right: 1.5rem;
+          background: none;
+          border: none;
+          color: #fff;
+          font-size: 2.5rem;
+          cursor: pointer;
+          z-index: 10002;
+          pointer-events: auto;
+        }
+        /* .doughnut-icon removed, now using menu-toggle styling */
+        .menu-toggle {
+          background: none;
+          border: none;
+          border-radius: 0;
+          cursor: pointer;
+          display: none;
+          justify-content: center;
+          align-items: center;
+          width: 28px;
+          height: 28px;
+          padding: 0;
+          color: #222;
+          stroke: #222;
+        }
+        .menu-toggle span {
+          display: block;
+          width: 20px;
+          height: 1px;
+          margin: 2px 0;
+          background: #222 !important;
+          border-radius: 2px;
+          transition: all 0.3s;
+          
+        }
+        @media (max-width: 900px) {
+          .nav-links {
+            display: none !important;
+          }
+          .menu-toggle {
+            display: flex !important;
+            position: relative;
+            z-index: 10001;
+          }
+        }
+      </style>
+
+      <!-- Search Modal Overlay -->
+      <div id="search-modal" class="search-modal-overlay" style="display:none;">
+        <div class="search-modal-content">
+          <button class="close-search-modal" id="close-search-modal" aria-label="Close search">&times;</button>
+          <form id="article-search-form" action="/articles/search" method="get" autocomplete="off">
+            <input type="search" id="article-search-input" name="q" placeholder="Search articles..."
+              aria-label="Search articles" class="search-input-modal" autofocus>
+          </form>
+          <div id="search-results-dropdown" class="search-results-dropdown"></div>
+        </div>
+      </div>
+      <style>
+        .search-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0 8px;
+          display: flex;
+          align-items: center;
+        }
+
+        .search-modal-overlay {
+          position: fixed;
+          top: 4rem;
+          left: 0;
+          right: 0;
+          background: rgba(30, 32, 38, 0.85);
+          z-index: 9999;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          transition: opacity 0.2s;
+          width: 100vw;
+          max-width: 1200px;
+          margin: 0 auto;
+          min-height: 120px;
+          box-sizing: border-box;
+          pointer-events: auto;
+          background: none;
+        }
+
+        .search-modal-content {
+          background: #fff;
+          border-radius: 18px;
+          padding: 32px 24px 24px 24px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+          min-width: 320px;
+          max-width: 600px;
+          width: 100%;
+          position: relative;
+          text-align: center;
+          margin: 0 auto;
+        }
+
+        .search-input-modal {
+          width: 100%;
+          max-width: 500px;
+          font-size: 1.2rem;
+          padding: 14px 18px;
+          border-radius: 10px;
+          border: 1px solid #e0e3e8;
+          margin-bottom: 18px;
+          outline: none;
+          background: #f7f8fa;
+          color: #222;
+          box-sizing: border-box;
+          margin-left: auto;
+          margin-right: auto;
+          display: block;
+        }
+
+        .close-search-modal {
+          position: absolute;
+          top: 12px;
+          right: 18px;
+          background: none;
+          border: none;
+          font-size: 2rem;
+          color: #888;
+          cursor: pointer;
+          z-index: 2;
+        }
+
+        .search-results-dropdown {
+          max-height: 260px;
+          overflow-y: auto;
+          background: #fff;
+          border-radius: 10px;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+          margin-top: 0;
+          text-align: left;
+          width: 100%;
+          max-width: 400px;
+          margin-left: auto;
+          margin-right: auto;
+          position: relative;
+        }
+
+        .search-result-item {
+          padding: 12px 18px;
+          border-bottom: 1px solid #f0f0f0;
+          cursor: pointer;
+          color: #222;
+          text-decoration: none;
+          display: block;
+          transition: background 0.15s;
+        }
+
+        .search-result-item:last-child {
+          border-bottom: none;
+        }
+
+        .search-result-item:hover {
+          background: #f7f8fa;
+        }
+
+        @media (max-width: 600px) {
+          .search-modal-content {
+            min-width: 90vw;
+            padding: 18px 6px 12px 6px;
+          }
+
+          .search-input-modal {
+            font-size: 1rem;
+            padding: 10px 8px;
+          }
+        }
+      </style>
+      <script>
+        // Modal open/close logic and search AJAX (site-wide)
+        document.addEventListener('DOMContentLoaded', function () {
+          const openBtn = document.getElementById('open-search-modal');
+          const modal = document.getElementById('search-modal');
+          const closeBtn = document.getElementById('close-search-modal');
+          const input = document.getElementById('article-search-input');
+          const searchForm = document.getElementById('article-search-form');
+          let searchTimeout;
+          if (openBtn && modal && closeBtn && input && searchForm) {
+            openBtn.addEventListener('click', function (e) {
+              e.preventDefault();
+              modal.style.display = 'flex';
+              setTimeout(() => { input.focus(); }, 100);
+            });
+            closeBtn.addEventListener('click', function () {
+              modal.style.display = 'none';
+            });
+            window.addEventListener('keydown', function (e) {
+              if (e.key === 'Escape') modal.style.display = 'none';
+            });
+            modal.addEventListener('click', function (e) {
+              if (e.target === modal) modal.style.display = 'none';
+            });
+
+            // Search AJAX on keyup
+            input.addEventListener('keyup', function (e) {
+              clearTimeout(searchTimeout);
+              const q = input.value.trim();
+              if (q.length < 2) {
+                showSearchResults([]);
+                return;
+              }
+              searchTimeout = setTimeout(() => {
+                fetch(`/articles/search?q=${encodeURIComponent(q)}`, {
+                  headers: { 'Accept': 'application/json' }
+                })
+                  .then(res => res.json())
+                  .then(data => {
+                    showSearchResults(data.results || []);
+                  });
+              }, 250);
+            });
+            // Hide dropdown on blur
+            input.addEventListener('blur', function () {
+              setTimeout(() => {
+                let container = document.getElementById('search-results-container');
+                if (container) container.style.display = 'none';
+              }, 200);
+            });
+            input.addEventListener('focus', function () {
+              let container = document.getElementById('search-results-container');
+              if (container && container.innerHTML.trim()) container.style.display = 'block';
+            });
+            // On form submit, go to full search page
+            searchForm.addEventListener('submit', function (e) {
+              let container = document.getElementById('search-results-container');
+              if (container) container.style.display = 'none';
+            });
+            // Show search results
+            function showSearchResults(results) {
+              let container = document.getElementById('search-results-container');
+              if (!container) {
+                container = document.createElement('div');
+                container.id = 'search-results-container';
+                container.className = 'search-results-dropdown';
+                searchForm.appendChild(container);
+              }
+              container.style.display = 'block';
+              if (!results.length) {
+                container.innerHTML = '<div class="search-no-results">No articles found.</div>';
+                return;
+              }
+              container.innerHTML = results.map(article =>
+                `<a href="/articles/${article.slug}" class="search-result-item">
+              <strong>${article.title}</strong><br>
+              <span>${article.description || ''}</span>
+          </a>`
+              ).join('');
+            }
+          }
+
+          // Mobile menu logic (independent)
+          var menuToggle = document.getElementById('menu-toggle');
+          var mobileMenu = document.getElementById('mobile-menu');
+          var menuClose = document.getElementById('mobile-menu-close');
+          var menuLinks = mobileMenu.querySelectorAll('a');
+
+          function openMenu() {
+            mobileMenu.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            menuToggle.setAttribute('aria-expanded', 'true');
+            menuToggle.style.display = 'none';
+            menuToggle.style.visibility = 'hidden';
+            menuClose.focus();
+          }
+
+          function closeMenu() {
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.style.display = '';
+            menuToggle.style.visibility = '';
+            menuToggle.focus();
+          }
+
+          menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            openMenu();
+          });
+
+          menuClose.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeMenu();
+          });
+
+          // Keyboard accessibility: ESC closes menu
+          window.addEventListener('keydown', function(e) {
+            if (mobileMenu.getAttribute('aria-hidden') === 'false' && (e.key === 'Escape' || e.key === 'Esc')) {
+              closeMenu();
+            }
+          });
+
+          // Close menu when clicking outside
+          mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+              closeMenu();
+            }
+          });
+
+          // Close menu when clicking any link
+          menuLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+              closeMenu();
+            });
+          });
+
+          // Ensure menu is reset on window resize (optional, for edge cases)
+          window.addEventListener('resize', function() {
+            if (window.innerWidth > 900) {
+              closeMenu();
+            }
+          });
+        });
+      </script>
+
+    </div>
+  </div>
+</nav>

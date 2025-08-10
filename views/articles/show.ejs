@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head', { pageTitle: typeof pageTitle !== 'undefined' ? pageTitle : article.title }) %>
+  <style>
+    body { background: #f7f8fa; }
+    .article-header-figma {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 32px 0 16px 0;
+      text-align: center;
+      border-radius: 0 0 16px 16px;
+      margin-bottom: 32px;
+    }
+    .article-title-figma {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 0 0 12px 0;
+      color: #222;
+    }
+    .article-meta-figma {
+      color: #888;
+      font-size: 1rem;
+      margin-bottom: 24px;
+    }
+    .article-cover-figma {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto 32px auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+    .article-content-figma {
+      background: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 32px;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      font-size: 1.15rem;
+      line-height: 1.8;
+    }
+    .author-box-figma {
+      display: flex;
+      align-items: center;
+      margin-top: 40px;
+      background: #f1f3f6;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .author-avatar-figma {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin-right: 20px;
+      object-fit: cover;
+      border: 2px solid #e0e3e8;
+    }
+    .author-info-figma {
+      display: flex;
+      flex-direction: column;
+    }
+    .author-name-figma {
+      font-weight: 700;
+      color: #222;
+      font-size: 1.1rem;
+    }
+    .author-bio-figma {
+      color: #666;
+      font-size: 0.98rem;
+    }
+    .article-tags-figma {
+      margin: 32px auto 0 auto;
+      max-width: 800px;
+      text-align: left;
+    }
+    .tag-figma {
+      display: inline-block;
+      background: #e0e3e8;
+      color: #444;
+      border-radius: 8px;
+      padding: 4px 12px;
+      margin: 0 8px 8px 0;
+      font-size: 0.95rem;
+    }
+    .article-actions-figma {
+      margin: 32px auto 0 auto;
+      max-width: 800px;
+      text-align: right;
+    }
+    @media (max-width: 600px) {
+      .article-content-figma, .author-box-figma {
+        padding: 18px 8px;
+      }
+      .article-title-figma {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <%- include('../partials/header', { activeNiche: typeof activeNiche !== 'undefined' ? activeNiche : null }) %>
+  <div style="margin-top: 60px;"></div>
+  <div class="article-header-figma">
+    <h1 class="article-title-figma"><%= article.title %></h1>
+    <div class="article-meta-figma">
+      <span><%= article.niche_name %></span>
+      &middot;
+      <span><%= new Date(article.created_at).toLocaleDateString() %></span>
+      &middot;
+      <span><%= article.views || 0 %> views</span>
+    </div>
+    <% if (article.image) { %>
+      <img src="<%= article.image %>" alt="<%= article.title %>" class="article-cover-figma" loading="lazy">
+    <% } %>
+    <p class="article-description"><%= article.description %></p>
+    <% if (article.opengraph_image) { %>
+      <div class="og-preview">
+        <img src="<%= article.opengraph_image %>" alt="OpenGraph Preview" class="og-image" loading="lazy">
+      </div>
+    <% } %>
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center; margin:2em 0;"
+         data-ad-client="ca-pub-2883451707964095"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <main>
+    <article class="article-content-figma">
+      <div class="markdown-body">
+        <%- article.rendered %>
+      </div>
+    </article>
+    <section class="author-box-figma">
+      <% if (article.author_avatar) { %>
+        <img src="<%= article.author_avatar %>" alt="<%= article.author %>" class="author-avatar-figma" loading="lazy">
+      <% } %>
+      <div class="author-info-figma">
+        <span class="author-name-figma"><%= article.author %></span>
+        <span class="author-bio-figma"><%= article.author_title %></span>
+      </div>
+    </section>
+    <% if (article.categories && article.categories.length) { %>
+      <div class="article-tags-figma">
+        <% article.categories.forEach(function(cat) { %>
+          <span class="tag-figma"><%= cat.name %></span>
+        <% }); %>
+      </div>
+    <% } %>
+    <% if (session && session.admin) { %>
+      <div class="article-actions-figma">
+        <a href="/articles/<%= article.id %>/edit" class="btn">✏️ Edit</a>
+        <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" onsubmit="return confirm('Delete this article?');" style="display:inline;">
+          <button type="submit" class="btn btn-danger">🗑️ Delete</button>
+        </form>
+      </div>
+    <% } %>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+</html>

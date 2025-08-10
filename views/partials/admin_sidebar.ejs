@@ -1,0 +1,47 @@
+<aside class="admin-sidebar" style="background:#fff;border-right:1px solid #e0e3e8;padding:2.5rem 1.5rem;min-width:220px;display:flex;flex-direction:column;align-items:flex-start;box-shadow:0 2px 12px rgba(0,0,0,0.04);position:sticky;top:0;z-index:100;max-height:100vh;overflow-y:auto;">
+    <div class="sidebar-header" style="margin-bottom:2rem;">
+        <span class="sidebar-subtitle" style="color:#888;font-size:1.15rem;">Admin Panel</span>
+    </div>
+    <nav class="sidebar-nav" style="display:flex;flex-direction:column;gap:1.2rem;width:100%;">
+        <a href="/admin/dashboard" class="nav-link<%= (activePage === 'dashboard' ? ' active' : '') %>" style="color:#0077cc;font-weight:600;display:flex;align-items:center;gap:0.7rem;padding:0.7rem 1rem;border-radius:8px;background:#f0f6ff;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"/>
+                <rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+            Dashboard
+        </a>
+        <a href="/articles" class="nav-link<%= (activePage === 'articles' ? ' active' : '') %>" style="color:#444;display:flex;align-items:center;gap:0.7rem;padding:0.7rem 1rem;border-radius:8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                <polyline points="14,2 14,8 20,8"/>
+            </svg>
+            Articles
+        </a>
+        <a href="/categories" class="nav-link<%= (activePage === 'categories' ? ' active' : '') %>" style="color:#444;display:flex;align-items:center;gap:0.7rem;padding:0.7rem 1rem;border-radius:8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+            Categories
+        </a>
+        <% if (user && user.isAdmin) { %>
+            <a href="/job" class="nav-link nav-admin<%= (activePage === 'jobs' ? ' active' : '') %>" style="color:#444;display:flex;align-items:center;gap:0.7rem;padding:0.7rem 1rem;border-radius:8px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17h16M4 13h16M4 9h16"/></svg>
+                Sponsored Jobs
+            </a>
+            <a href="/job/new" class="nav-link nav-admin<%= (activePage === 'postjob' ? ' active' : '') %>" style="color:#444;display:flex;align-items:center;gap:0.7rem;padding:0.7rem 1rem;border-radius:8px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>
+                Post a Job
+            </a>
+            <a href="/affiliate" class="nav-link nav-admin<%= (activePage === 'affiliate' ? ' active' : '') %>" style="color:#ff6600;display:flex;align-items:center;gap:0.7rem;padding:0.7rem 1rem;border-radius:8px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6600" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+                Affiliate Marketing
+            </a>
+            <a href="/admin/logout" class="nav-link nav-admin" style="color:#e74c3c;display:flex;align-items:center;gap:0.7rem;padding:0.7rem 1rem;border-radius:8px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 16l4-4m0 0l-4-4m4 4H7"/><path d="M3 21V3"/></svg>
+                Logout
+            </a>
+        <% } %>
+    </nav>
+</aside>

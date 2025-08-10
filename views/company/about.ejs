@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head', { pageTitle: 'About Us' }) %>
+  <style>
+    .company-main { max-width: 800px; margin: 60px auto 40px auto; padding: 2.5rem 2rem; background: #fff; border-radius: 18px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); border-top: 6px solid #ff6600; }
+    .company-main h1 { color: #ff6600; font-size: 2.2rem; margin-bottom: 1.2em; font-weight: 700; letter-spacing: -1px; }
+    .company-main h2 { color: #222; font-size: 1.3rem; margin-top: 2em; margin-bottom: 0.7em; font-weight: 600; border-left: 4px solid #ff6600; padding-left: 0.6em; background: #f9f6f2; }
+    .company-main p { margin-bottom: 1.1em; color: #444; line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <div style="height:32px;"></div>
+  <main class="company-main">
+    <h1>About Us</h1>
+    <p>NomadProHub is dedicated to empowering remote professionals and digital nomads worldwide. Our mission is to provide resources, guides, and a supportive community for those seeking location independence.</p>
+    <h2>Our Values</h2>
+    <p>We believe in freedom, flexibility, and the power of technology to connect people and opportunities globally.</p>
+  </main>
+  <div style="height:32px;"></div>
+  <%- include('../partials/footer') %>
+</body>
+</html>

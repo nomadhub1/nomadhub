@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <%- include('../partials/header', { activeNiche: typeof activeNiche !== 'undefined' ? activeNiche : (typeof niche !== 'undefined' ? niche.slug : (typeof category !== 'undefined' ? category.slug : null)) }) %>
+    <section class="category-articles-section" style="margin-top: 90px;">
+      <div class="container">
+        <h1 class="section-title" style="font-size:2.2rem;font-weight:800;margin-bottom:2.5rem;letter-spacing:-0.01em;">
+          <%= typeof category !== 'undefined' ? category.name : (typeof niche !== 'undefined' ? niche.name : '') %>
+        </h1>
+        <% if (articles.length === 0) { %>
+          <div style="padding:2rem 0;text-align:center;color:#888;font-size:1.1rem;">No articles found in this category.</div>
+        <% } else { %>
+        <div class="figma-article-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.2rem;">
+          <% articles.forEach(function(article) { %>
+            <a href="/articles/<%= article.slug %>" class="figma-article-card" style="display:block;background:#fff;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,0.07);overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;text-decoration:none;color:inherit;">
+              <div style="width:100%;height:210px;overflow:hidden;">
+                <img src="<%= article.image || '/public/img/default-article.jpg' %>" alt="<%= article.title %>" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.2s;">
+              </div>
+              <div style="padding:1.5rem 1.3rem 1.2rem 1.3rem;">
+                <div style="display:flex;align-items:center;gap:0.7em 1.2em;font-size:0.98em;color:#94a3b8;margin-bottom:0.7em;flex-wrap:wrap;">
+                  <% if (article.categories && article.categories.length) { %>
+                    <% article.categories.forEach(function(cat) { %>
+                      <span class="badge"><%= cat.name %></span>
+                    <% }); %>
+                  <% } %>
+                  <span><%= new Date(article.created_at).toLocaleDateString() %></span>
+                  <% if (article.read_time) { %>
+                    <span><%= article.read_time %> min read</span>
+                  <% } %>
+                </div>
+                <h2 style="font-size:1.25rem;font-weight:700;margin:0 0 0.5rem 0;color:#222;line-height:1.3;"> <%= article.title %> </h2>
+                <p style="color:#64748b;font-size:1.05rem;line-height:1.6;margin-bottom:1.1rem;"> <%= article.description %> </p>
+                <% if (article.author) { %>
+                  <div style="display:flex;align-items:center;gap:0.7em;margin-top:0.7em;">
+                    <img src="<%= article.author_avatar || '/public/img/default-avatar.png' %>" alt="Author" style="width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+                    <div style="display:flex;flex-direction:column;gap:0.1em;">
+                      <span style="font-weight:600;color:#0f0f23;font-size:1em;"> <%= article.author %> </span>
+                      <% if (article.author_title) { %>
+                        <span style="font-size:0.95em;color:#94a3b8;"> <%= article.author_title %> </span>
+                      <% } %>
+                    </div>
+                  </div>
+                <% } %>
+              </div>
+            </a>
+          <% }) %>
+        </div>
+        <% } %>
+      </div>
+    </section>
+    <br>
+    <br>
+    <%- include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <div class="admin-layout" style="display:flex;min-height:calc(100vh - 80px);background:#f7f8fa; padding-top:70px;">
+        <%- include('../partials/admin_sidebar', { user: user, activePage: 'reset' }) %>
+        <main class="admin-main" style="flex:1;padding:3rem 2.5rem;">
+            <section class="form-section" style="padding:3rem 0;background:#f7f8fa;min-height:60vh;">
+                <div class="container" style="max-width:500px;margin:0 auto;background:#fff;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,0.08);padding:2.5rem 2rem;">
+                    <h1 class="section-title" style="font-size:2rem;font-weight:700;color:#222;margin-bottom:1.5rem;text-align:center;">Reset Admin Password</h1>
+                    <% if (success) { %><p class="form-success" style="color:#388e3c;background:#eafaf1;border-radius:6px;padding:0.7em 1em;margin-bottom:1em;text-align:center;"> <%= success %> </p><% } %>
+                    <% if (error) { %><p class="form-error" style="color:#d32f2f;background:#fff0f0;border-radius:6px;padding:0.7em 1em;margin-bottom:1em;text-align:center;"> <%= error %> </p><% } %>
+                    <form method="POST" action="/admin/reset" class="form" style="display:flex;flex-direction:column;gap:1.2rem;">
+                        <input name="currentPassword" type="password" placeholder="Current Password" required class="form-input" style="padding:0.8rem 1rem;border-radius:8px;border:1px solid #e0e3e8;font-size:1.1rem;" />
+                        <input name="newPassword" type="password" placeholder="New Password" required class="form-input" style="padding:0.8rem 1rem;border-radius:8px;border:1px solid #e0e3e8;font-size:1.1rem;" />
+                        <button type="submit" class="btn btn-primary" style="background:#0077cc;color:#fff;padding:0.7rem 1.5rem;border-radius:8px;font-size:1.1rem;font-weight:600;">Update</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+    <%- include('../partials/footer') %>
+</body>
+</html>

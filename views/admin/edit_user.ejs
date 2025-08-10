@@ -1,0 +1,31 @@
+<% include('../partials/admin_sidebar', { admin: admin, activePage: 'users' }) %>
+<div class="admin-content" style="max-width:540px;margin:2rem auto;background:#fff;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.07);padding:2rem;">
+  <h2 style="margin-bottom:1.5rem;color:#0077cc;font-weight:700;">Edit User</h2>
+  <form action="/admin/users/<%= user.id %>/edit" method="POST" class="admin-form" style="display:flex;flex-direction:column;gap:1.2rem;">
+    <label style="font-weight:600;">Email:</label>
+    <input type="email" name="email" value="<%= user.email %>" required style="padding:0.7rem 1rem;border-radius:8px;border:1px solid #e0e3e8;">
+
+    <label style="font-weight:600;">Name:</label>
+    <input type="text" name="name" value="<%= user.name || '' %>" style="padding:0.7rem 1rem;border-radius:8px;border:1px solid #e0e3e8;">
+
+    <label style="font-weight:600;">Avatar URL:</label>
+    <input type="text" name="avatar" value="<%= user.avatar || '' %>" style="padding:0.7rem 1rem;border-radius:8px;border:1px solid #e0e3e8;">
+    <% if (user.avatar) { %>
+      <div style="margin-bottom:1rem;">
+        <img src="<%= user.avatar %>" alt="avatar" style="width:64px;height:64px;border-radius:50%;border:2px solid #e0e3e8;">
+        <span style="margin-left:1rem;color:#888;font-size:0.95rem;">Current avatar preview</span>
+      </div>
+    <% } %>
+
+    <label style="font-weight:600;">Title:</label>
+    <input type="text" name="title" value="<%= user.title || '' %>" style="padding:0.7rem 1rem;border-radius:8px;border:1px solid #e0e3e8;">
+
+    <label style="font-weight:600;">Admin:</label>
+    <input type="checkbox" name="isAdmin" <%= user.isAdmin ? 'checked' : '' %> style="width:18px;height:18px;">
+
+    <button type="submit" class="btn-primary" style="margin-top:1.5rem;border-radius:8px;padding:0.7rem 1.2rem;font-weight:700;font-size:1.1rem;background:#0077cc;color:#fff;border:none;">Update User</button>
+  </form>
+  <form action="/admin/users/<%= user.id %>/delete" method="POST" style="margin-top:2rem;">
+    <button type="submit" class="btn-danger" style="border-radius:8px;padding:0.7rem 1.2rem;font-weight:700;font-size:1.1rem;background:#e74c3c;color:#fff;border:none;" onclick="return confirm('Delete this user?')">Delete User</button>
+  </form>
+</div>

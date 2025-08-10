@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+</head>
+<body style="min-height:100vh; margin:0; padding:0;">
+    <style>
+       
+        
+        .login-card {
+            position: relative;
+            z-index: 1;
+            max-width: 370px;
+            margin: 0 auto;
+            margin-top: 8vh;
+            background: rgba(255,255,255,0.97);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            padding: 2.5rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .login-logo {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1.2rem;
+        }
+        .login-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: #1a2236;
+            letter-spacing: 0.01em;
+        }
+        .form-input {
+            width: 100%;
+            margin-bottom: 1.1rem;
+        }
+        .form-error {
+            color: #d32f2f;
+            background: #fff0f0;
+            border-radius: 6px;
+            padding: 0.5em 1em;
+            margin-bottom: 1em;
+            width: 100%;
+            text-align: center;
+
+            
+        }
+        
+        @media (max-width: 600px) {
+            .login-card { margin-top: 2vh; padding: 1.2rem 0.5rem; }
+        }
+    </style>
+    <%- include('../partials/header') %>
+    <br>
+    <br>
+
+    <div class="login-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Capricorn Constellation" class="login-logo" />
+        <div class="login-title">Admin Login</div>
+        <% if (error) { %>
+            <p class="form-error"><%= error %></p>
+        <% } %>
+        <form method="POST" action="/admin/login" class="form" style="width:100%;">
+            <input name="email" type="email" placeholder="Email" required class="form-input" />
+            <input name="password" type="password" placeholder="Password" required class="form-input" />
+            <button type="submit" class="btn btn-primary" style="width:100%;">Login</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <%- include('../partials/footer') %>
+
+</body>
+</html>

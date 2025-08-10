@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+</head>
+<body>
+    <% var isHome = true; %>
+    <%- include('partials/header', { isHome: isHome, activeNiche: null }) %>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Digital Nomad Resources</span>
+            </div>
+            <h1 class="hero-title">
+                Build your remote career.<br>
+                <span class="gradient-text">Master the nomad lifestyle.</span>
+            </h1>
+            <p class="hero-description">
+                Expert guides, tools, and strategies for digital nomads, freelancers, and remote professionals. 
+                Join 25,000+ nomads building location-independent careers.
+            </p>
+            <div class="hero-actions">
+                <button class="btn-primary">
+                    <span>Get Free Resources</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m9 18 6-6-6-6"/>
+                    </svg>
+                </button>
+                <a href="/categories" class="btn-secondary">
+                    <span>Browse Categories</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">25K+</span>
+                    <span class="stat-label">Active Members</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Expert Guides</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Countries Covered</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-image-container">
+                <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Digital nomad working remotely" class="hero-image">
+                <div class="floating-card card-1">
+                    <div class="card-icon">💼</div>
+                    <div class="card-content">
+                        <span class="card-title">Remote Jobs</span>
+                        <span class="card-subtitle">$75K+ avg salary</span>
+                    </div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="card-icon">🌴</div>
+                    <div class="card-content">
+                        <span class="card-title">50+ Destinations</span>
+                        <span class="card-subtitle">Visa guides included</span>
+                    </div>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="card-icon">🤖</div>
+                    <div class="card-content">
+                        <span class="card-title">AI Tools</span>
+                        <span class="card-subtitle">10x productivity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories (static sample, can be made dynamic) -->
+
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span class="badge-dot"></span>
+                    <span>Explore Categories</span>
+                </div>
+                <h2>Everything you need to thrive as a digital nomad</h2>
+                <p>From remote work tools to visa guides, we've got you covered with expert insights and practical resources.</p>
+            </div>
+
+            <% const categoryOrder = [
+                { slug: 'remote-work-tools', icon: '🛠️', title: 'Remote Work Tools & Productivity', desc: 'Master the tools and techniques that make remote work seamless and efficient.' },
+                { slug: 'ai-for-freelancers', icon: '🤖', title: 'AI & Automation for Freelancers', desc: 'Leverage cutting-edge technology to scale your freelance business and increase efficiency.' },
+                { slug: 'nomad-travel-visas', icon: '✈️', title: 'Digital Nomad Travel & Visas', desc: 'Navigate the world with confidence and legal clarity with our comprehensive travel guides.' },
+                { slug: 'side-hustles', icon: '💰', title: 'Side Hustles & Passive Income', desc: 'Build multiple income streams for financial freedom and location independence.' },
+                { slug: 'freelance-skills', icon: '🎯', title: 'Freelancing & Digital Skill Growth', desc: 'Level up your skills and command premium rates in the competitive freelance market.' },
+                { slug: 'how-to-guides', icon: '📚', title: 'How-To Guides for Solopreneurs', desc: 'Practical tutorials for building and scaling your one-person business from anywhere.' }
+            ]; %>
+
+            <% categoryOrder.forEach(function(catMeta) { 
+                const cat = categories.find(c => c.slug === catMeta.slug);
+            %>
+            <div class="category-section" id="<%= catMeta.slug %>">
+                <div class="category-header">
+                    <div class="category-icon"><%= catMeta.icon %></div>
+                    <div class="category-info">
+                        <h3><%= catMeta.title %></h3>
+                        <p><%= catMeta.desc %></p>
+                    </div>
+                    <div class="category-count">
+                        <%= cat && cat.articles ? cat.articles.length : 0 %> Articles
+                        <% if (cat && cat.articles && cat.articles.length > 3) { %>
+                            <a href="/<%= cat.slug %>" class="read-more-inline">Read more...</a>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="articles-grid">
+                    <% if (cat && cat.articles && cat.articles.length > 0) { %>
+                        <% cat.articles.slice(0, 3).forEach(function(article) { %>
+                        <a href="/articles/<%= article.slug %>" class="article-card-link">
+                        <article class="article-card <%= article.badge ? 'featured' : '' %>">
+                            <div class="article-image">
+                                <img src="<%= article.image || '/public/img/default-article.jpg' %>" alt="<%= article.title %>" loading="lazy">
+                                <% if (article.badge) { %>
+                                  <div class="article-badge" aria-label="<%= article.badge %> badge"><%= article.badge %></div>
+                                <% } %>
+                            </div>
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span class="article-category"><%= article.category_name %></span>
+                                    <% if (article.created_at) { %>
+                                      <span class="article-date"><%= new Date(article.created_at).toLocaleDateString() %></span>
+                                    <% } %>
+                                    <% if (article.read_time) { %>
+                                      <span class="article-time"><%= article.read_time %> min read</span>
+                                    <% } %>
+                                </div>
+                                <h4 class="article-title"><%= article.title %></h4>
+                                <p><%= article.description %></p>
+                                <% if (article.author) { %>
+                                <div class="article-author">
+                                    <img src="<%= article.author_avatar || '/public/img/default-avatar.png' %>" alt="Author" class="author-avatar">
+                                    <div class="author-info">
+                                        <span class="author-name"><%= article.author %></span>
+                                        <% if (article.author_title) { %>
+                                          <span class="author-title"><%= article.author_title %></span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <% } %>
+                            </div>
+                        </article>
+                        </a>
+                        <% }) %>
+                    <% } else { %>
+                        <p>No articles found.</p>
+                    <% } %>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup: The Nomad Journey -->
+    <section class="newsletter" id="guides">
+      <div class="container">
+        <div class="newsletter-header">
+          <h2>The Nomad Journey</h2>
+          <p>Subscribe for weekly tips, guides, and exclusive resources for digital nomads.</p>
+        </div>
+        <!-- Mailchimp embed placeholder -->
+        <div class="newsletter-form">
+          <!-- TODO: Replace with Mailchimp embed code -->
+          <form style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+            <input type="email" placeholder="Enter your email" required
+              style="color:#fff; border:1px solid #444; border-radius:8px; padding:12px 16px; font-size:1.1rem; min-width:220px; outline:none; transition:border 0.2s;"
+              onfocus="this.style.border='1.5px solid #fff'" onblur="this.style.border='1px solid #444'">
+            <button type="submit" class="btn-primary" style="border-radius:8px; padding:12px 22px; font-weight:700; font-size:1.1rem; border:none; cursor:pointer;">Subscribe</button>
+          </form>
+          <p class="newsletter-note" style="color:#aaa;font-size:9px;">Powered by Mailchimp (coming soon)</p>
+        </div>
+      </div>
+    </section>
+    <%- include('partials/footer') %>
+    <script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+  <style>
+    body { background: #f7f8fa; }
+    .search-header-figma {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 32px 0 16px 0;
+      text-align: center;
+      border-radius: 0 0 16px 16px;
+      margin-bottom: 32px;
+    }
+    .search-title-figma {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin: 0 0 12px 0;
+      color: #222;
+    }
+    .search-results-figma {
+      background: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 32px;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .search-list-figma {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .search-list-figma li {
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #f1f3f6;
+    }
+    .search-list-figma li:last-child {
+      border-bottom: none;
+    }
+    .search-article-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+    .search-desc {
+      display: block;
+      color: #666;
+      font-size: 1rem;
+      margin-top: 4px;
+    }
+    @media (max-width: 600px) {
+      .search-results-figma {
+        padding: 18px 8px;
+      }
+      .search-title-figma {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <div style="margin-top: 60px;"></div>
+  <div class="search-header-figma">
+    <h1 class="search-title-figma">Search Results</h1>
+  </div>
+  <main>
+    <section class="search-results-figma">
+      <% if (results && results.length) { %>
+        <ul class="search-list-figma">
+          <% results.forEach(function(article) { %>
+            <li>
+              <a href="/articles/<%= article.slug %>" class="search-article-title"><%= article.title %></a>
+              <span class="search-desc"><%= article.description %></span>
+            </li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <p>No articles found.</p>
+      <% } %>
+    </section>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+</html>

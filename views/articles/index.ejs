@@ -1,0 +1,66 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<% if (user && user.isAdmin) { %>
+<div class="admin-layout" style="display:flex;min-height:calc(100vh - 80px);background:#f7f8fa; padding-top:70px;">
+  <%- include('../partials/admin_sidebar', { user: user, activePage: 'articles' }) %>
+  <div style="flex:1;">
+<% } %>
+
+<div class="container articles-list" style="max-width:1100px;margin:0 auto;padding:2rem 0;">
+  <h1 style="font-size:2rem;font-weight:700;color:#222;margin-bottom:2rem;">All Articles</h1>
+  <% if (articles.length === 0) { %>
+    <div class="no-articles" style="background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);padding:2rem 1.2rem;text-align:center;">
+      <p style="color:#888;font-size:1.1rem;">No articles found. Please check back later!</p>
+    </div>
+  <% } else { %>
+    <div class="tiny-articles-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;">
+      <% articles.forEach(function(article) { %>
+        <div class="tiny-article-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);padding:1rem;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:260px;position:relative;">
+          <a href="/articles/<%= article.slug %>" style="text-decoration:none;width:100%;">
+            <div class="article-image" style="width:100%;height:120px;background:#f0f6ff;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+              <% if (article.image && article.image !== '') { %>
+                <% if (article.image.startsWith('/uploads/')) { %>
+                  <img src="<%= article.image %>" alt="<%= article.title %>" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" />
+                <% } else if (article.image.startsWith('http')) { %>
+                  <img src="<%= article.image %>" alt="<%= article.title %>" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" />
+                <% } else { %>
+                  <img src="/uploads/<%= article.image %>" alt="<%= article.title %>" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" />
+                <% } %>
+              <% } else if (article.imageUrl) { %>
+                <img src="<%= article.imageUrl %>" alt="<%= article.title %>" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" />
+              <% } else { %>
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#0077cc" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 17l4-4 4 4"/><path d="M8 7h.01"/></svg>
+              <% } %>
+            </div>
+            <h3 class="article-title" style="font-size:1.1rem;font-weight:600;color:#222;margin-bottom:0.5rem;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+              <%= article.title %>
+            </h3>
+          </a>
+          <p class="article-description" style="color:#444;font-size:0.98rem;margin-bottom:0.7rem;text-align:center;min-height:40px;overflow:hidden;text-overflow:ellipsis;">
+            <%= article.description %>
+          </p>
+          <div class="article-meta" style="color:#888;font-size:0.92rem;margin-bottom:0.7rem;text-align:center;">
+            <%= new Date(article.created_at).toLocaleDateString() %> – <%= article.niche_name %>
+          </div>
+          <div class="article-actions" style="margin-top:1rem;display:flex;gap:8px;">
+            <a href="/articles/<%= article.slug %>" title="View" style="display:inline-block;vertical-align:middle;padding:4px 8px;border-radius:6px;background:#f0f6ff;color:#0077cc;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0077cc" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M2 12h2"/><path d="M20 12h2"/></svg>
+            </a>
+            <a href="/articles/<%= article.id %>/edit" title="Edit" style="display:inline-block;vertical-align:middle;padding:4px 8px;border-radius:6px;background:#f0f6ff;color:#0077cc;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0077cc" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+            </a>
+            <form action="/articles/delete/<%= article.id %>" method="POST" style="display:inline;">
+              <button type="submit" title="Delete" style="background:#fff;color:#e74c3c;border:none;padding:4px 8px;border-radius:6px;vertical-align:middle;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+              </button>
+            </form>
+          </div>
+          <!-- Category tags removed for admin view -->
+        </div>
+      <% }); %>
+    </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %>
+<% if (user && user.isAdmin) { %></div></div><% } %>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+</head>
+<body>
+    <%- include('partials/header', { activeNiche: null }) %>
+    <section class="niches-section" style="margin-top: 80px;">
+      <div class="container">
+        <h1 class="section-title">Niches</h1>
+        <ul class="niche-list">
+          <% niches.forEach(function(niche) { %>
+            <li class="niche-item">
+              <a href="/<%= niche.slug %>"><%= niche.name %></a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </section>
+    <%- include('partials/footer') %>
+</body>
+</html>

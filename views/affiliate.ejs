@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head', { pageTitle: 'Affiliate Marketing' }) %>
+  <style>
+    .affiliate-main { max-width: 900px; margin: 60px auto 40px auto; padding: 2.5rem 2rem; background: #fff; border-radius: 18px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); border-top: 6px solid #ff6600; }
+    .affiliate-main h1 { color: #ff6600; font-size: 2.2rem; margin-bottom: 1.2em; font-weight: 700; letter-spacing: -1px; }
+    .affiliate-main h2 { color: #222; font-size: 1.3rem; margin-top: 2em; margin-bottom: 0.7em; font-weight: 600; border-left: 4px solid #ff6600; padding-left: 0.6em; background: #f9f6f2; }
+    .affiliate-main table { width: 100%; border-collapse: collapse; margin-top: 2em; margin-bottom: 2em; }
+    .affiliate-main th, .affiliate-main td { border: 1px solid #eee; padding: 0.8em; text-align: left; }
+    .affiliate-main th { background: #f9f6f2; color: #ff6600; font-weight: 700; }
+    .affiliate-main tr:nth-child(even) { background: #fafafa; }
+    .affiliate-main a { color: #ff6600; text-decoration: underline; }
+  </style>
+  <!-- Google AdSense script placeholder -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body>
+  <%- include('partials/header') %>
+  <div style="height:32px;"></div>
+  <main class="affiliate-main">
+    <h1>Affiliate Marketing</h1>
+    <p>Explore top affiliate programs for digital nomads, freelancers, and remote professionals. We may earn commissions from qualifying purchases via these links. Ads may be served via Google AdSense.</p>
+    <h2>Affiliate Programs Cheat Sheet</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Program</th>
+          <th>Commission</th>
+          <th>Cookie Duration</th>
+          <th>Best Audience</th>
+          <th>Signup Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Travel</td><td>SafetyWing</td><td>10% recurring</td><td>90 days</td><td>Digital nomads, remote workers needing insurance</td><td><a href="https://safetywing.com/affiliates" target="_blank">safetywing.com/affiliates</a></td></tr>
+        <tr><td>Travel</td><td>WorldNomads</td><td>~10% per policy</td><td>60 days</td><td>Adventure & long-term travelers</td><td><a href="https://www.worldnomads.com/partners" target="_blank">worldnomads.com/partners</a></td></tr>
+        <tr><td>Travel</td><td>Booking.com</td><td>~25% of Booking’s commission (~4–6% total)</td><td>30 days</td><td>Any traveler booking hotels or stays</td><td><a href="https://affiliate.booking.com" target="_blank">affiliate.booking.com</a></td></tr>
+        <tr><td>Remote Work Tools</td><td>Fiverr Affiliates</td><td>$15–$150 per first-time buyer</td><td>12 months</td><td>Freelancers, entrepreneurs, agencies</td><td><a href="https://affiliates.fiverr.com" target="_blank">affiliates.fiverr.com</a></td></tr>
+        <tr><td>Remote Work Tools</td><td>Canva Affiliates</td><td>Up to $36 per Pro signup</td><td>30 days</td><td>Designers, marketers, content creators</td><td><a href="https://www.canva.com/affiliates" target="_blank">canva.com/affiliates</a></td></tr>
+        <tr><td>Remote Work Tools</td><td>Grammarly Affiliates</td><td>$0.20 per free signup + $20 per premium signup</td><td>90 days</td><td>Students, writers, professionals</td><td><a href="https://www.grammarly.com/affiliates" target="_blank">grammarly.com/affiliates</a></td></tr>
+        <tr><td>Finance</td><td>Wise</td><td>£10–£50 per new user transfer</td><td>30 days</td><td>Freelancers, expats, remote workers</td><td><a href="https://wise.com/partners" target="_blank">wise.com/partners</a></td></tr>
+        <tr><td>Finance</td><td>Payoneer</td><td>$25 per referral after $1,000 in payments</td><td>12 months</td><td>Global freelancers & businesses</td><td><a href="https://www.payoneer.com/partners" target="_blank">payoneer.com/partners</a></td></tr>
+      </tbody>
+    </table>
+    <!-- Google AdSense ad slot example -->
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center; margin:2em 0;"
+         data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </main>
+  <div style="height:32px;"></div>
+  <%- include('partials/footer') %>
+</body>
+</html>

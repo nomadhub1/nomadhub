@@ -1,0 +1,18 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="job-edit-form" style="padding: 3rem 0; background: #f7f8fa; min-height: 60vh;">
+  <div class="container" style="max-width: 700px; margin: 0 auto; background: #fff; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 2.5rem 2rem;">
+    <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 1.2rem; color: #222; letter-spacing: 0.01em;">Edit Sponsored Job</h1>
+    <form method="post">
+      <input type="text" name="title" value="<%= job.title %>" required style="width:100%;margin-bottom:1rem;padding:0.8rem 1rem;border-radius:8px;border:1px solid #e0e3e8;font-size:1.1rem;">
+      <input type="text" name="company" value="<%= job.company %>" required style="width:100%;margin-bottom:1rem;padding:0.8rem 1rem;border-radius:8px;border:1px solid #e0e3e8;font-size:1.1rem;">
+      <input type="text" name="location" value="<%= job.location %>" style="width:100%;margin-bottom:1rem;padding:0.8rem 1rem;border-radius:8px;border:1px solid #e0e3e8;font-size:1.1rem;">
+      <input type="text" name="job_url" value="<%= job.job_url %>" style="width:100%;margin-bottom:1rem;padding:0.8rem 1rem;border-radius:8px;border:1px solid #e0e3e8;font-size:1.1rem;">
+      <textarea name="description" required style="width:100%;margin-bottom:1.2rem;padding:0.8rem 1rem;border-radius:8px;border:1px solid #e0e3e8;font-size:1.1rem;min-height:120px;"><%= job.description %></textarea>
+      <button type="submit" class="btn-primary" style="padding:0.7rem 2.2rem;font-size:1.1rem;border-radius:8px;">Update</button>
+    </form>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

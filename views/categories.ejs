@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+</head>
+<body>
+    <%- include('partials/header', { activeNiche: null }) %>
+    <% if (user && user.isAdmin) { %>
+    <div class="admin-layout" style="display:flex;min-height:calc(100vh - 80px);background:#f7f8fa; padding-top:70px;">
+      <%- include('partials/admin_sidebar', { user: user, activePage: 'categories' }) %>
+      <div style="flex:1;">
+    <% } %>
+    <style>
+      body { background: #f7f8fa; }
+      .categories-section {
+        margin-top: 80px;
+      }
+      .categories-header {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+      .categories-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: center;
+      }
+      .category-badge {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+        padding: 32px 24px 24px 24px;
+        min-width: 180px;
+        max-width: 220px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.22s cubic-bezier(.4,1.4,.4,1), box-shadow 0.22s;
+        position: relative;
+      }
+      .category-badge:hover, .category-badge:focus {
+        transform: scale(1.08);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+        z-index: 2;
+      }
+      .category-image {
+        width: 100%;
+        max-width: 180px;
+        border-radius: 12px;
+        margin: 12px auto 0 auto;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        transition: opacity 0.22s;
+      }
+      .category-name {
+        font-weight: 700;
+        font-size: 1.18em;
+        color: #222;
+        margin-bottom: 6px;
+        text-decoration: none;
+        display: block;
+      }
+      .category-article-count {
+        color: #888;
+        font-size: 0.98em;
+        margin-bottom: 8px;
+        display: block;
+      }
+      @media (max-width: 600px) {
+        .categories-badges {
+          gap: 16px;
+        }
+        .category-badge {
+          min-width: 140px;
+          max-width: 98vw;
+          padding: 18px 8px 12px 8px;
+        }
+      }
+    </style>
+    <section class="categories-section">
+      <div class="container">
+        <div class="categories-header">
+          <h1 class="section-title">All Categories</h1>
+        </div>
+        <div class="categories-badges">
+          <% categories.forEach(function(category) { %>
+            <a href="/categories/<%= category.slug %>" class="category-badge">
+              <span class="category-name"><%= category.name %></span>
+              <span class="category-article-count"><%= category.articles ? category.articles.length : 0 %> articles</span>
+            </a>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+    <%- include('partials/footer') %>
+    <% if (user && user.isAdmin) { %></div></div><% } %>
+</body>
+</html>

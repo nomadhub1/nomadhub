@@ -1,0 +1,34 @@
+{
+  "name": "nomadprohub",
+  "version": "1.0.0",
+  "description": "A content platform for remote work, AI, nomad visas, freelancing, side hustles and solopreneur guides.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest --runInBand"
+  },
+  "author": "NomadProHub",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.3",
+    "cheerio": "^1.1.2",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.6.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-mysql-session": "^3.0.3",
+    "express-session": "^1.18.2",
+    "marked": "^9.1.6",
+    "method-override": "^3.0.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.3.3",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "jest": "^30.0.5",
+    "sanitize-html": "^2.17.0",
+    "supertest": "^7.1.4"
+  }
+}

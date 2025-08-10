@@ -1,0 +1,755 @@
+    /* Navbar and menu-toggle original style for index.html */
+    .navbar {
+        width: 100%;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        min-height: 64px;
+    }
+    .nav-left .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #222;
+        gap: 0.5rem;
+    }
+    .nav-center {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav-links {
+        display: flex;
+        gap: 1.2rem;
+        align-items: center;
+    }
+    .nav-link {
+        color: #222;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: color 0.2s;
+    }
+    .nav-link:hover {
+        color: #0077ff;
+    }
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    .search-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0 8px;
+        display: flex;
+        align-items: center;
+    }
+    .menu-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+    }
+    .menu-toggle span {
+        display: block;
+        width: 24px;
+        height: 3px;
+        margin: 4px 0;
+        background: #222;
+        border-radius: 2px;
+        transition: all 0.3s;
+    }
+    @media (max-width: 900px) {
+        .nav-links {
+            display: none !important;
+        }
+        .menu-toggle {
+            display: flex !important;
+        }
+    }
+    @media (max-width: 600px) {
+        .nav-container {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .nav-left, .nav-center, .nav-right {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .nav-left {
+            margin-bottom: 0.5rem;
+        }
+    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NomadProHub - Digital Nomad Resources & Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <span class="logo-icon">🌍</span>
+                    <span class="logo-text">NomadProHub</span>
+                </div>
+            </div>
+            
+            <div class="nav-center">
+                <div class="nav-links">
+                    <a href="#remote-work" class="nav-link">Remote Work</a>
+                    <a href="#ai-automation" class="nav-link">AI & Automation</a>
+                    <a href="#travel" class="nav-link">Travel & Visas</a>
+                    <a href="#side-hustles" class="nav-link">Side Hustles</a>
+                    <a href="#freelancing" class="nav-link">Freelancing</a>
+                    <a href="#guides" class="nav-link">How-To Guides</a>
+                </div>
+            </div>
+            
+            <div class="nav-right">
+                <button class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <button class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Digital Nomad Resources</span>
+            </div>
+            <h1 class="hero-title">
+                Build your remote career.<br>
+                <span class="gradient-text">Master the nomad lifestyle.</span>
+            </h1>
+            <p class="hero-description">
+                Expert guides, tools, and strategies for digital nomads, freelancers, and remote professionals. 
+                Join 25,000+ nomads building location-independent careers.
+            </p>
+            <div class="hero-actions">
+                <button class="btn-primary">
+                    <span>Get Free Resources</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m9 18 6-6-6-6"/>
+                    </svg>
+                </button>
+                <button class="btn-secondary">
+                    <span>Browse Categories</span>
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">25K+</span>
+                    <span class="stat-label">Active Members</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Expert Guides</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Countries Covered</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-image-container">
+                <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Digital nomad working remotely" class="hero-image">
+                <div class="floating-card card-1">
+                    <div class="card-icon">💼</div>
+                    <div class="card-content">
+                        <span class="card-title">Remote Jobs</span>
+                        <span class="card-subtitle">$75K+ avg salary</span>
+                    </div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="card-icon">🌴</div>
+                    <div class="card-content">
+                        <span class="card-title">50+ Destinations</span>
+                        <span class="card-subtitle">Visa guides included</span>
+                    </div>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="card-icon">🤖</div>
+                    <div class="card-content">
+                        <span class="card-title">AI Tools</span>
+                        <span class="card-subtitle">10x productivity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span class="badge-dot"></span>
+                    <span>Explore Categories</span>
+                </div>
+                <h2>Everything you need to thrive as a digital nomad</h2>
+                <p>From remote work tools to visa guides, we've got you covered with expert insights and practical resources.</p>
+            </div>
+
+            <!-- Remote Work Tools -->
+            <div class="category-section" id="remote-work">
+                <div class="category-header">
+                    <div class="category-icon">🛠️</div>
+                    <div class="category-info">
+                        <h3>Remote Work Tools & Productivity</h3>
+                        <p>Master the tools and techniques that make remote work seamless and efficient.</p>
+                    </div>
+                    <div class="category-count">12 Articles</div>
+                </div>
+                <div class="articles-grid">
+                    <article class="article-card featured">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Productivity setup">
+                            <div class="article-badge">Featured</div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Tools</span>
+                                <span class="article-date">Dec 15, 2024</span>
+                                <span class="article-time">8 min read</span>
+                            </div>
+                            <h4>Essential Remote Work Stack for 2025</h4>
+                            <p>Discover the productivity apps, communication tools, and workspace essentials that top remote professionals use to stay productive and connected.</p>
+                            <div class="article-author">
+                                <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Author" class="author-avatar">
+                                <div class="author-info">
+                                    <span class="author-name">Sarah Chen</span>
+                                    <span class="author-title">Remote Work Expert</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Time management">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Productivity</span>
+                                <span class="article-time">12 min read</span>
+                            </div>
+                            <h4>Time Management Across Time Zones</h4>
+                            <p>Proven strategies for managing your schedule when working with global teams and clients.</p>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Workspace setup">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Hardware</span>
+                                <span class="article-time">15 min read</span>
+                            </div>
+                            <h4>Building Your Perfect Mobile Office</h4>
+                            <p>Complete hardware guide for creating a portable workspace that works anywhere.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- AI & Automation -->
+            <div class="category-section" id="ai-automation">
+                <div class="category-header">
+                    <div class="category-icon">🤖</div>
+                    <div class="category-info">
+                        <h3>AI & Automation for Freelancers</h3>
+                        <p>Leverage cutting-edge technology to scale your freelance business and increase efficiency.</p>
+                    </div>
+                    <div class="category-count">18 Articles</div>
+                </div>
+                <div class="articles-grid">
+                    <article class="article-card featured">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800" alt="AI tools">
+                            <div class="article-badge">Trending</div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">AI</span>
+                                <span class="article-date">Dec 12, 2024</span>
+                                <span class="article-time">10 min read</span>
+                            </div>
+                            <h4>50+ ChatGPT Prompts for Freelancers</h4>
+                            <p>Transform your workflow with proven prompts for content creation, client communication, and project management.</p>
+                            <div class="article-author">
+                                <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Author" class="author-avatar">
+                                <div class="author-info">
+                                    <span class="author-name">Marcus Rodriguez</span>
+                                    <span class="author-title">AI Consultant</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/8386427/pexels-photo-8386427.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Automation">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Automation</span>
+                                <span class="article-time">18 min read</span>
+                            </div>
+                            <h4>Automating Your Admin Tasks</h4>
+                            <p>Step-by-step workflows for handling repetitive tasks while you focus on high-value work.</p>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/8386422/pexels-photo-8386422.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Content creation">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Content</span>
+                                <span class="article-time">14 min read</span>
+                            </div>
+                            <h4>AI Content Creation Tools Review</h4>
+                            <p>Comprehensive review of AI writing, design, and video tools that deliver professional results.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Travel & Visas -->
+            <div class="category-section" id="travel">
+                <div class="category-header">
+                    <div class="category-icon">✈️</div>
+                    <div class="category-info">
+                        <h3>Digital Nomad Travel & Visas</h3>
+                        <p>Navigate the world with confidence and legal clarity with our comprehensive travel guides.</p>
+                    </div>
+                    <div class="category-count">25 Articles</div>
+                </div>
+                <div class="articles-grid">
+                    <article class="article-card featured">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1008155/pexels-photo-1008155.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Digital nomad visa">
+                            <div class="article-badge">Updated</div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Visas</span>
+                                <span class="article-date">Dec 10, 2024</span>
+                                <span class="article-time">25 min read</span>
+                            </div>
+                            <h4>Complete Digital Nomad Visa Guide 2025</h4>
+                            <p>Every country offering nomad visas, requirements, costs, and application processes explained in detail.</p>
+                            <div class="article-author">
+                                <img src="https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Author" class="author-avatar">
+                                <div class="author-info">
+                                    <span class="author-name">Elena Vasquez</span>
+                                    <span class="author-title">Travel Expert</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1008155/pexels-photo-1008155.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Best destinations">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Destinations</span>
+                                <span class="article-time">16 min read</span>
+                            </div>
+                            <h4>Top 20 Nomad Destinations Ranked</h4>
+                            <p>Data-driven analysis of the best cities for remote work, including cost and internet speeds.</p>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1008155/pexels-photo-1008155.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Travel insurance">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Insurance</span>
+                                <span class="article-time">11 min read</span>
+                            </div>
+                            <h4>Digital Nomad Insurance Guide</h4>
+                            <p>Cut through the confusion with our guide to health, travel, and equipment insurance.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Side Hustles -->
+            <div class="category-section" id="side-hustles">
+                <div class="category-header">
+                    <div class="category-icon">💰</div>
+                    <div class="category-info">
+                        <h3>Side Hustles & Passive Income</h3>
+                        <p>Build multiple income streams for financial freedom and location independence.</p>
+                    </div>
+                    <div class="category-count">22 Articles</div>
+                </div>
+                <div class="articles-grid">
+                    <article class="article-card featured">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Passive income">
+                            <div class="article-badge">Popular</div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Passive Income</span>
+                                <span class="article-date">Dec 8, 2024</span>
+                                <span class="article-time">13 min read</span>
+                            </div>
+                            <h4>7 Passive Income Ideas for This Weekend</h4>
+                            <p>Proven strategies for creating income streams that work while you sleep, travel, or focus on other projects.</p>
+                            <div class="article-author">
+                                <img src="https://images.pexels.com/photos/1239286/pexels-photo-1239286.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Author" class="author-avatar">
+                                <div class="author-info">
+                                    <span class="author-name">David Kim</span>
+                                    <span class="author-title">Entrepreneur</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1181447/pexels-photo-1181447.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Digital products">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Digital Products</span>
+                                <span class="article-time">20 min read</span>
+                            </div>
+                            <h4>From Zero to $5K: Digital Products</h4>
+                            <p>Complete blueprint for creating and selling digital products that generate recurring revenue.</p>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600" alt="E-commerce">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">E-commerce</span>
+                                <span class="article-time">22 min read</span>
+                            </div>
+                            <h4>Modern Dropshipping Guide</h4>
+                            <p>Updated strategies for building a 6-figure e-commerce business from anywhere.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Freelancing -->
+            <div class="category-section" id="freelancing">
+                <div class="category-header">
+                    <div class="category-icon">🎯</div>
+                    <div class="category-info">
+                        <h3>Freelancing & Digital Skill Growth</h3>
+                        <p>Level up your skills and command premium rates in the competitive freelance market.</p>
+                    </div>
+                    <div class="category-count">30 Articles</div>
+                </div>
+                <div class="articles-grid">
+                    <article class="article-card featured">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1181248/pexels-photo-1181248.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Freelance skills">
+                            <div class="article-badge">Essential</div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Skills</span>
+                                <span class="article-date">Dec 5, 2024</span>
+                                <span class="article-time">17 min read</span>
+                            </div>
+                            <h4>High-Paying Skills You Can Learn in 90 Days</h4>
+                            <p>Focus your learning on in-demand skills that command $75+ per hour in the freelance marketplace.</p>
+                            <div class="article-author">
+                                <img src="https://images.pexels.com/photos/1239284/pexels-photo-1239284.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Author" class="author-avatar">
+                                <div class="author-info">
+                                    <span class="author-name">Jessica Park</span>
+                                    <span class="author-title">Freelance Coach</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1181304/pexels-photo-1181304.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Client communication">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Client Management</span>
+                                <span class="article-time">14 min read</span>
+                            </div>
+                            <h4>Client Communication Scripts</h4>
+                            <p>Proven email templates and communication strategies that help you land better clients.</p>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1181317/pexels-photo-1181317.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Portfolio">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Portfolio</span>
+                                <span class="article-time">12 min read</span>
+                            </div>
+                            <h4>Portfolio That Attracts Premium Clients</h4>
+                            <p>Step-by-step guide to showcasing your work in a way that demonstrates value and expertise.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- How-To Guides -->
+            <div class="category-section" id="guides">
+                <div class="category-header">
+                    <div class="category-icon">📚</div>
+                    <div class="category-info">
+                        <h3>How-To Guides for Solopreneurs</h3>
+                        <p>Practical tutorials for building and scaling your one-person business from anywhere.</p>
+                    </div>
+                    <div class="category-count">15 Articles</div>
+                </div>
+                <div class="articles-grid">
+                    <article class="article-card featured">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Business setup">
+                            <div class="article-badge">Guide</div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Legal</span>
+                                <span class="article-date">Dec 3, 2024</span>
+                                <span class="article-time">19 min read</span>
+                            </div>
+                            <h4>Solo Business Legal Setup Guide</h4>
+                            <p>Compare business registration, taxes, and legal requirements across nomad-friendly jurisdictions.</p>
+                            <div class="article-author">
+                                <img src="https://images.pexels.com/photos/1239282/pexels-photo-1239282.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Author" class="author-avatar">
+                                <div class="author-info">
+                                    <span class="author-name">Alex Thompson</span>
+                                    <span class="author-title">Business Consultant</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Marketing">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Marketing</span>
+                                <span class="article-time">16 min read</span>
+                            </div>
+                            <h4>Solo Marketing Automation</h4>
+                            <p>Build marketing funnels that generate leads 24/7 using free and low-cost tools.</p>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="https://images.pexels.com/photos/1181412/pexels-photo-1181412.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Scaling">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">Scaling</span>
+                                <span class="article-time">21 min read</span>
+                            </div>
+                            <h4>From Freelancer to Business Owner</h4>
+                            <p>When and how to scale beyond doing everything yourself, including hiring and systems.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-container">
+                <div class="newsletter-content">
+                    <div class="newsletter-badge">
+                        <span class="badge-dot"></span>
+                        <span>Weekly Newsletter</span>
+                    </div>
+                    <h2>Stay ahead of the curve</h2>
+                    <p>Join 25,000+ digital nomads who get our exclusive guides, tools, and opportunities delivered every Tuesday.</p>
+                    
+                    <div class="newsletter-benefits">
+                        <div class="benefit">
+                            <div class="benefit-icon">🎯</div>
+                            <span>Curated remote job opportunities</span>
+                        </div>
+                        <div class="benefit">
+                            <div class="benefit-icon">📈</div>
+                            <span>Latest productivity tools and hacks</span>
+                        </div>
+                        <div class="benefit">
+                            <div class="benefit-icon">✈️</div>
+                            <span>Destination guides and visa updates</span>
+                        </div>
+                        <div class="benefit">
+                            <div class="benefit-icon">💰</div>
+                            <span>Income diversification strategies</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="newsletter-form">
+                    <form class="signup-form" id="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Enter your email address" class="email-input" required>
+                            <button type="submit" class="submit-btn">
+                                <span>Subscribe Free</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m9 18 6-6-6-6"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="form-disclaimer">No spam. Unsubscribe anytime. Free forever.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="logo">
+                            <span class="logo-icon">🌍</span>
+                            <span class="logo-text">NomadProHub</span>
+                        </div>
+                        <p>Your ultimate resource for building a successful remote career and nomadic lifestyle. Join thousands of professionals who've made the leap to location independence.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="YouTube">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Categories</h4>
+                        <ul>
+                            <li><a href="#remote-work">Remote Work Tools</a></li>
+                            <li><a href="#ai-automation">AI & Automation</a></li>
+                            <li><a href="#travel">Travel & Visas</a></li>
+                            <li><a href="#side-hustles">Side Hustles</a></li>
+                            <li><a href="#freelancing">Freelancing</a></li>
+                            <li><a href="#guides">How-To Guides</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Our Story</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Free Tools</a></li>
+                            <li><a href="#">Job Board</a></li>
+                            <li><a href="#">Community</a></li>
+                            <li><a href="#">Newsletter Archive</a></li>
+                            <li><a href="#">Affiliate Program</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">GDPR</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 NomadProHub. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy</a>
+                        <a href="#">Terms</a>
+                        <a href="#">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../public/js/script.js"></script>
+</body>
+</html>

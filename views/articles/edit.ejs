@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <% if (user && user.isAdmin) { %>
+    <div class="admin-layout" style="display:flex;min-height:calc(100vh - 80px);background:#f7f8fa; padding-top:70px;">
+      <%- include('../partials/admin_sidebar', { user: user, activePage: 'edit' }) %>
+      <div style="flex:1;">
+    <% } %>
+    <style>
+      body { background: #f7f8fa; }
+      .form-header-figma {
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        padding: 32px 0 16px 0;
+        text-align: center;
+        border-radius: 0 0 16px 16px;
+        margin-bottom: 32px;
+      }
+      .form-title-figma {
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin: 0 0 12px 0;
+        color: #222;
+      }
+      .form-section-figma {
+        background: #fff;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 32px;
+        border-radius: 16px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+      .form-input, .form-categories {
+        width: 100%;
+        margin-bottom: 18px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid #e0e3e8;
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
+      .form-category-checkbox {
+        margin-right: 18px;
+        font-size: 1rem;
+      }
+      .btn-primary, .btn-secondary {
+        margin-right: 10px;
+      }
+      @media (max-width: 600px) {
+        .form-section-figma {
+          padding: 18px 8px;
+        }
+        .form-title-figma {
+          font-size: 1.3rem;
+        }
+      }
+    </style>
+    <div style="margin-top: 60px;"></div>
+    <div class="form-header-figma">
+      <h1 class="form-title-figma">Edit Article</h1>
+    </div>
+    <section class="form-section-figma">
+      <form action="/articles/update/<%= article.id %>" method="POST" enctype="multipart/form-data" id="articleEditForm" class="form">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" value="<%= article.title %>" required class="form-input">
+        <label for="description">Short Description</label>
+        <textarea name="description" rows="3" required class="form-input"><%= article.description %></textarea>
+        <label>Categories</label>
+        <div class="form-categories">
+          <% categories.forEach(cat => { %>
+            <label class="form-category-checkbox">
+              <input type="checkbox" name="category_ids" value="<%= cat.id %>" <%= Array.isArray(article.categories) && article.categories.map(c => c.id).includes(cat.id) ? 'checked' : '' %>> <%= cat.name %>
+            </label>
+          <% }) %>
+        </div>
+        <label for="badge">Badge/Tag</label>
+        <select id="badge" name="badge" class="form-input">
+          <option value="">Select a badge</option>
+          <option value="trending" <%= article.badge === 'trending' ? 'selected' : '' %>>Trending</option>
+          <option value="updated" <%= article.badge === 'updated' ? 'selected' : '' %>>Updated</option>
+          <option value="popular" <%= article.badge === 'popular' ? 'selected' : '' %>>Popular</option>
+          <option value="essential" <%= article.badge === 'essential' ? 'selected' : '' %>>Essential</option>
+          <option value="guide" <%= article.badge === 'guide' ? 'selected' : '' %>>Guide</option>
+        </select>
+        <label for="image">Image (Upload or Link)</label>
+        <div style="color:#888;font-size:0.98rem;margin-bottom:8px;">
+          You can upload an image or paste a direct image URL (ending in .jpg, .png, etc.), or a page link from Pexels/Unsplash. Page links will be auto-converted to the main image.
+        </div>
+        <input type="file" id="image" name="image" accept="image/*" class="form-input">
+        <input type="url" id="image_link" name="image_link" value="<%= article.image %>" placeholder="Or paste image URL" class="form-input">
+        <% if (article.image) { %>
+          <img src="<%= article.image %>" alt="Current image" style="max-width:150px;display:block;">
+        <% } %>
+        <label for="niche_id">Niche</label>
+        <select id="niche_id" name="niche_id" class="form-input" required>
+          <option value="">Select a niche</option>
+          <% niches.forEach(niche => { %>
+            <option value="<%= niche.id %>" <%= article.niche_id == niche.id ? 'selected' : '' %>><%= niche.name %></option>
+          <% }) %>
+        </select>
+        <label for="author">Author Name</label>
+        <input type="text" id="author" name="author" value="<%= article.author %>" class="form-input">
+        <label for="author_title">Author Title</label>
+        <input type="text" id="author_title" name="author_title" value="<%= article.author_title %>" class="form-input">
+        <label for="author_avatar">Author Avatar (Upload or Link)</label>
+        <input type="file" id="author_avatar" name="author_avatar" accept="image/*" class="form-input">
+        <input type="url" id="author_avatar_link" name="author_avatar_link" value="<%= article.author_avatar %>" placeholder="Or paste avatar URL" class="form-input">
+        <% if (article.author_avatar) { %>
+          <img src="<%= article.author_avatar %>" alt="Current avatar" style="max-width:100px;display:block;">
+        <% } %>
+        <label for="article_date">Article Date</label>
+        <input type="date" id="article_date" name="article_date" value="<%= article.article_date ? article.article_date.toISOString().slice(0,10) : '' %>" class="form-input">
+        <label for="markdown">Markdown Content</label>
+        <textarea id="markdown" name="markdown" class="form-input"><%= article.markdown %></textarea>
+        <button type="submit" class="btn btn-primary">Update Article</button>
+      </form>
+      <script>
+        document.getElementById('articleEditForm').addEventListener('submit', function(e) {
+          const image = document.getElementById('image').files[0];
+          const avatar = document.getElementById('author_avatar').files[0];
+          const allowedTypes = ['image/jpeg','image/png','image/gif','image/webp'];
+          const maxSize = 2 * 1024 * 1024;
+          let errors = [];
+          if (image && (!allowedTypes.includes(image.type) || image.size > maxSize)) {
+            errors.push('Main image must be JPG, PNG, GIF, or WEBP and under 2MB.');
+          }
+          if (avatar && (!allowedTypes.includes(avatar.type) || avatar.size > maxSize)) {
+            errors.push('Author avatar must be JPG, PNG, GIF, or WEBP and under 2MB.');
+          }
+          if (errors.length) {
+            alert(errors.join('\n'));
+            e.preventDefault();
+          }
+        });
+      </script>
+      <!-- EasyMDE -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script>
+        new EasyMDE({ element: document.getElementById("markdown") });
+      </script>
+    </section>
+    <%- include('../partials/footer') %>
+    <% if (user && user.isAdmin) { %></div></div><% } %>
+</body>
+</html>

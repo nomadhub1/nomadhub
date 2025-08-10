@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>Admin - Manage Users</title>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <div class="admin-layout" style="display:flex;min-height:calc(100vh - 80px);background:#f7f8fa; padding-top:70px;">
+        <%- include('../partials/admin_sidebar', { user: user, activePage: 'users' }) %>
+        <main class="admin-main" style="flex:1;padding:3rem 2.5rem;">
+            <div class="users-content" style="max-width:900px;margin:0 auto;">
+                <h1 style="font-size:2rem;font-weight:700;color:#222;margin-bottom:2rem;">Manage Users</h1>
+                <div class="users-list-card" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:2rem 1.5rem;">
+                    <% if (users && users.length) { %>
+                        <table style="width:100%;border-collapse:collapse;">
+                            <thead>
+                                <tr style="background:#f0f6ff;color:#0077cc;font-weight:600;">
+                                    <th style="padding:0.7rem 1rem;text-align:left;">ID</th>
+                                    <th style="padding:0.7rem 1rem;text-align:left;">Email</th>
+                                    <th style="padding:0.7rem 1rem;text-align:left;">Name</th>
+                                    <th style="padding:0.7rem 1rem;text-align:left;">Avatar</th>
+                                    <th style="padding:0.7rem 1rem;text-align:left;">Title</th>
+                                    <th style="padding:0.7rem 1rem;text-align:left;">Admin</th>
+                                    <th style="padding:0.7rem 1rem;text-align:left;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% users.forEach(function(user) { %>
+                                    <tr style="border-bottom:1px solid #e0e3e8;">
+                                        <td style="padding:0.7rem 1rem;"><%= user.id %></td>
+                                        <td style="padding:0.7rem 1rem;"> <%= user.email %> </td>
+                                        <td style="padding:0.7rem 1rem;"> <%= user.name || '' %> </td>
+                                        <td style="padding:0.7rem 1rem;">
+                                            <% if (user.avatar) { %>
+                                                <img src="<%= user.avatar %>" alt="avatar" style="width:32px;height:32px;border-radius:50%;">
+                                            <% } %>
+                                        </td>
+                                        <td style="padding:0.7rem 1rem;"> <%= user.title || '' %> </td>
+                                        <td style="padding:0.7rem 1rem;"> <%= user.isAdmin ? 'Yes' : 'No' %> </td>
+                                        <td style="padding:0.7rem 1rem;">
+                                            <a href="/admin/users/<%= user.id %>/edit" title="Edit" style="margin-right:0.2rem;display:inline-block;vertical-align:middle;padding:6px 10px;border-radius:8px;background:#f0f6ff;color:#0077cc;box-shadow:0 1px 4px rgba(0,0,0,0.04);transition:background 0.2s;">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0077cc" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+                                            </a>
+                                            <form action="/admin/users/<%= user.id %>/delete" method="POST" style="display:inline;">
+                                                <button onclick="return confirm('Delete this user?')" type="submit" title="Delete" style="background:#fff;color:#e74c3c;border:none;padding:6px 10px;border-radius:8px;vertical-align:middle;box-shadow:0 1px 4px rgba(0,0,0,0.04);transition:background 0.2s;">
+                                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    <% } else { %>
+                        <p style="color:#888;font-size:1.1rem;text-align:center;">No users found.</p>
+                    <% } %>
+                </div>
+            </div>
+        </main>
+    </div>
+    <%- include('../partials/footer') %>
+</body>
+</html>
