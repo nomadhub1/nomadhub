@@ -9,7 +9,7 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   waitForConnections: true,
-  connectionLimit: 5, // Match Clever Cloud free plan limit
+  connectionLimit: 25,
   queueLimit: 0,
 });
 
